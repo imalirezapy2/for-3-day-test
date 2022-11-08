@@ -20,14 +20,12 @@ return new class extends Migration
             $table->string('start_terminal');
             $table->string('end_terminal');
             $table->integer('move_day');
-            $table->timestamp('move_time');
+            $table->time('move_time');
             $table->integer('proccess_time');
             $table->integer('capacity');
             $table->enum('bus_type', ['vip', 'standard', 'mini']);
             $table->bigInteger('price');
-            $table->integer('remaining_capacity');
-            $table->json('free_seats');
-            $table->string('search_code')->unique();
+            $table->integer('search_code')->unique();
             $table->timestamps();
         });
     }
