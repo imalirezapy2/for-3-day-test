@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Book;
-use App\Models\books;
 use App\Models\Plan;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -24,10 +23,9 @@ class PlanSeeder extends Seeder
             $cities[] = Str::random(5);
         }
 
-
         foreach ($cities as $city) {
             for ($i = 0; $i < fake()->numberBetween(1, 3); ++$i) {
-                $plan = Plan::create([
+                Plan::create([
                     'start_city' => $city,
                     'end_city' => Arr::random($cities),
                     'start_terminal' => Str::random(5),
@@ -40,25 +38,6 @@ class PlanSeeder extends Seeder
                     'price' => fake()->numberBetween(8, 15) . '00000',
                     'created_at' => now()
                 ]);
-
-                $seats = range(1, $capacity);
-                for ($j = 0; $j < fake()->numberBetween(1, 10); ++$j) {
-
-                    if (count($seats) < 1){
-                        break;
-                    }
-
-                    $count = fake()->numberBetween(1, 6);
-                    $seats_num = Arr::random($seats, $count);
-                    $seats = array_diff($seats, $seats_num);
-
-                    Book::create([
-                        'plan_id' => $plan->id,
-                        'count' => $count,
-                        'seats_num' => json_encode($seats_num),
-                        'created_at' => now()
-                    ]);
-                }
             }
         }
     }
