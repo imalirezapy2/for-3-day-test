@@ -25,7 +25,6 @@ return new class extends Migration
             $table->integer('capacity');
             $table->enum('bus_type', ['vip', 'standard', 'mini']);
             $table->bigInteger('price');
-            $table->integer('search_code')->unique();
             $table->timestamps();
         });
     }
