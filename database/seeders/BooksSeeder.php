@@ -21,11 +21,11 @@ class BooksSeeder extends Seeder
             $seats = range(1, $plan->capacity);
             for ($j = 0; $j < fake()->numberBetween(1, 10); ++$j) {
 
-                if (count($seats) < 1) {
+                if (count($seats) <= 1) {
                     break;
                 }
 
-                $count = fake()->numberBetween(1, 6);
+                $count = fake()->numberBetween(1, count($seats)/2+1);
                 $seats_num = Arr::random($seats, $count);
                 $seats = array_diff($seats, $seats_num);
 
