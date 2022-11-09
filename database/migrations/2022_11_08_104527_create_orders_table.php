@@ -19,6 +19,8 @@ return new class extends Migration
             $table->foreign('book_id')->references('id')->on('books')->cascadeOnDelete();
             $table->string('fname');
             $table->string('lname');
+            $table->bigInteger('phone');
+            $table->integer('seat_num');
             $table->integer('national_code');
             $table->timestamps();
         });

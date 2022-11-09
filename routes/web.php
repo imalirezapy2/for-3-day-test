@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Book;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
@@ -16,7 +17,6 @@ use Illuminate\Support\Str;
 */
 
 Route::get('/', function () {
-    $seats = range(1, 20);
-    dd($seats);
+    dd(\App\Models\Order::all()->count());
     return view('welcome');
 });
