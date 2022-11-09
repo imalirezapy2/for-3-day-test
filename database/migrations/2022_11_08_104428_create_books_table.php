@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('plan_id');
             $table->foreign('plan_id')->references('id')->on('plans')->cascadeOnDelete();
             $table->integer('count');
-            $table->boolean('is_active')->default(true);
+            $table->boolean('payed')->default(false);
             $table->json('seats_num');
             $table->timestamps();
         });

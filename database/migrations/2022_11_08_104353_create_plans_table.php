@@ -25,7 +25,7 @@ return new class extends Migration
             $table->integer('capacity');
             $table->enum('bus_type', ['vip', 'standard', 'mini']);
             $table->bigInteger('price');
-            $table->timestamps();
+            $table->date('created_at');
         });
     }
 

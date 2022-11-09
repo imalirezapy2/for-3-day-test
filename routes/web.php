@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PlanController;
 use App\Models\Book;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
@@ -16,7 +18,5 @@ use Illuminate\Support\Str;
 |
 */
 
-Route::get('/', function () {
-    dd(\App\Models\Order::all()->count());
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index']);
+Route::get('/plans/{plan}', [PlanController::class, 'index']);

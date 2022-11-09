@@ -29,6 +29,10 @@ class OrderSeeder extends Seeder
                      'national_code' => fake()->randomNumber(9),
                      'created_at' => now()
                  ]);
+
+                 $book->update([
+                     'payed' => true,
+                 ]);
              };
         }
     }
