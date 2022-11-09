@@ -19,24 +19,24 @@ class PlanSeeder extends Seeder
     public function run()
     {
         $cities = [];
-        for ($i = 0; $i < 20; ++$i) {
+        for ($i = 0; $i < 15; ++$i) {
             $cities[] = Str::random(5);
         }
 
         foreach ($cities as $city) {
-            for ($i = 0; $i < fake()->numberBetween(1, 3); ++$i) {
+            for ($i = 0; $i < fake()->numberBetween(1, 2); ++$i) {
                 Plan::create([
                     'start_city' => $city,
                     'end_city' => Arr::random($cities),
                     'start_terminal' => Str::random(5),
                     'end_terminal' => Str::random(5),
-                    'move_day' => fake()->numberBetween(0, 7),
-                    'move_time' => now()->addHours(fake()->numberBetween(1, 23))->format('H:i:s'),
+                    'move_day' => fake()->numberBetween(0, 6),
+                    'move_time' => now()->addHours(fake()->numberBetween(1, 23))->format('H:i'),
                     'proccess_time' => fake()->numberBetween(9, 20) . '0',
                     'capacity' => $capacity = fake()->numberBetween(20, 40),
                     'bus_type' => $capacity <= 25 ? 'mini' : Arr::random(['vip', 'standard']),
                     'price' => fake()->numberBetween(8, 15) . '00000',
-                    'created_at' => now()
+                    'created_at' => now()->format('Y-m-d')
                 ]);
             }
         }
