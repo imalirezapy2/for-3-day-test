@@ -15,11 +15,10 @@ return new class extends Migration
     {
         Schema::create('books', function (Blueprint $table) {
             $table->id();
-
             $table->unsignedBigInteger('plan_id');
             $table->foreign('plan_id')->references('id')->on('plans')->cascadeOnDelete();
-            $table->integer('tracking_code')->unique();
             $table->integer('count');
+            $table->boolean('is_active')->default(true);
             $table->json('seats_num');
             $table->timestamps();
         });
